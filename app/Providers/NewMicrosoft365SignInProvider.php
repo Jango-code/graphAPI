@@ -6,8 +6,9 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 use App\Events\NewMicrosoft365SignInEvent;
 use App\Listeners\NewMicrosoft365SignInListener;
+//use Dcblogdev\MsGraph\Events\NewMicrosoft365SignInEvent;
 
-class AppServiceProvider extends ServiceProvider
+class NewMicrosoft365SignInProvider extends ServiceProvider
 {
     /**
      * Register any application services.
@@ -24,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Event::listen(
             NewMicrosoft365SignInEvent::class,
-            NewMicrosoft365SignInListener::class, 'handle'
+            [NewMicrosoft365SignInListener::class, 'handle']
         );
     }
 }

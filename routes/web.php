@@ -1,20 +1,18 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\APIController;
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::redirect('/', 'login');
+
+Route::group(['middleware' => ['web', 'guest']], function(){
+    Route::get('login', APIController::class, 'login')->name('login');
+    Route::get('connect', APIController::class, 'connect')->name('connect');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::group(['middleware' => ['web', 'MsGraphAuthenticated'], 'prefix' => 'app'], function(){
+    Route::get('/', PagesController::class, 'app')->name('app');
+    Route::get('logout', APIController::class, 'logout')->name('logout');
 });
-
-require __DIR__.'/auth.php';
