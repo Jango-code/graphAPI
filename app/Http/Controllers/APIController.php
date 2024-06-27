@@ -20,6 +20,9 @@ class APIController extends Controller
     public function connect()
     {
         return MsGraph::connect();
+        // MsGraph::connect();
+        // return view('test');
+
     }
 
     public function logout()

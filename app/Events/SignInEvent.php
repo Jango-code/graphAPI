@@ -2,13 +2,13 @@
 
 namespace App\Events;
 
-use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Foundation\Events\Dispatchable;
 use App\Listeners\NewMicrosoft365SignInListener;
-//use Dcblogdev\MsGraph\Events\NewMicrosoft365SignInEvent;
+use Illuminate\Broadcasting\InteractsWithSockets;
 
-class NewMicrosoft365SignInEvent
+class SignInEvent
 {
     use Dispatchable;
     use InteractsWithSockets;

@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
-use App\Events\NewMicrosoft365SignInEvent;
+use App\Events\SignInEvent;
 use App\Listeners\NewMicrosoft365SignInListener;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Event::listen(
-            NewMicrosoft365SignInEvent::class,
+            SignInEvent::class,
             NewMicrosoft365SignInListener::class, 'handle'
         );
     }

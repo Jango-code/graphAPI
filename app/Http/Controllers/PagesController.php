@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Dcblogdev\MsGraph\Facades\MsGraph;
 use Illuminate\Http\Request;
+use App\Providers\MicrosoftSignInProvider;
 
 class PagesController extends Controller
 {

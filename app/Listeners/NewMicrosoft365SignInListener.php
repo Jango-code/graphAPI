@@ -3,12 +3,13 @@
 namespace App\Listeners;
 
 use App\Models\User;
+use App\Events\SignInEvent;
 use Dcblogdev\MsGraph\MsGraph;
 use Illuminate\Support\Facades\Auth;
 
 class NewMicrosoft365SignInListener
 {
-    public function handle(object $event): void
+    public function handle(SignInEvent $event): void
     {
         $user = User::firstOrCreate([
             'email' => $event->token['info']['mail'],
