@@ -14,6 +14,7 @@ Route::get('connect', APIController::class, 'connect')->name('connect');
 Route::middleware([MsGraphAuthenticated::class])->group(function () {
     Route::get('app', PagesController::class, 'app')->name('app');
     Route::get('logout', APIController::class, 'logout')->name('logout');
+
 });
 
-Route::view('/test', 'test')->name('test');
+Route::view('/test', 'test');
